@@ -8,29 +8,45 @@
   <title>Ecommerce</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<?php include "include/nav.php"; ?>
+
+<div class="container py-4">
+  <?php
+    if(isset($_POST['ajouter'])){
+     $login = $_POST['login'];
+     $pwd = $_POST['password'];
+
+
+     if(!empty($login) && !empty($pwd)){
+         echo "bonjour $login votre mot est : $pwd ";
+       }else{
+
+        ?>
+        <div class="alert alert-danger" role="alert">
+        Login, password sont obligatoire
+        </div>
+        <?php
+       
+       }
+
+   
+    }
+  ?>
+<form method="post">
+    <label 
+      class="form-label">Login
+   </label>
+    <input type="text"  class="form-control" name="login">
+
+    <label 
+      class="form-label">Password
+   </label>
+    <input type="password"  class="form-control" name="password">
+
+    <input type="submit" value="Ajouter Utilisateur" class=" btn btn-primary  my-2" name="ajouter">
+
+  </form>
+</div>
+  
 </body>
 </html>
